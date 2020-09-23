@@ -9,24 +9,51 @@ const fetchMovieData = async (searchString)=>{
             s: searchString
         }
     });
+    if(resp.data.Error){
+        return [];
+    }
     return resp.data.Search  
 }
+//Autocomplete list Generation:
+const root = document.querySelector('.autocomplete');
+root.innerHTML = `
+<label><b>Search Films</b></label>
+<input class="input"/>
+<div class="dropdown">
+    <div class="dropdown-menu">
+        <div class="dropdown-content results">
+
+        </div>
+    </div>
+</div>
+`
+const results = document.querySelector('.results');
+const dropdown = document.querySelector('.dropdown');
 const input = document.querySelector('input');
 
 
 const onInput = async (e)=>{
 const movies = await fetchMovieData(e.target.value);
+dropdown.classList.add('is-active');
+if(movies.length > 0){
 for(let movie of movies)
 {
-    const div = document.createElement('div');
-    div.innerHTML = `
+    const item = document.createElement('a');
+    item.classList.add('dropdown-item')
+    item.innerHTML = `
     <img src="${movie.Poster}"/>
-    <h1>${movie.Title}</h1>`;
-    
-    document.querySelector('#target').appendChild(div);
+    ${movie.Title}`;
 
+    results.appendChild(item);
 }
-}
+    } else{
+        const item = document.createElement('a');
+        item.classList.add('dropdown-item')
+        item.innerHTML = `
+        No result Found`;
+        results.appendChild(item);
+    }
+        }
 
 input.addEventListener('input', debouncer(onInput));
 
