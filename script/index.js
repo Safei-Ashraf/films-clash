@@ -9,13 +9,14 @@ const fetchMovieData = async (searchString)=>{
             s: searchString
         }
     });
-    console.log(resp.data);  
+    return resp.data.Search  
 }
 const input = document.querySelector('input');
 
 
-const onInput = (e)=>{
-fetchMovieData(e.target.value);
+const onInput = async (e)=>{
+const movies = await fetchMovieData(e.target.value);
+console.log(movies)
 }
 
 input.addEventListener('input', debouncer(onInput));
