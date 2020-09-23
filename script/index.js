@@ -12,15 +12,23 @@ const fetchMovieData = async (searchString)=>{
     console.log(resp.data);  
 }
 const input = document.querySelector('input');
-let timeoutId;
 
+const debouncer = (callback,delay = 800)=>{
+    let timeoutId;
+    return(...args)=>{
+        if(timeoutId){
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(()=>{ 
+            callback.apply(null,args)
+        },delay);
+    }
+}
+
+//delay api calls until user finishs typing: (debouncing an input>> waiting sometime after last event to do sth)
 const onInput = (e)=>{
-    if(timeoutId){
-        clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(()=>{fetchMovieData(e.target.value)},800);
-    
-    }
+fetchMovieData(e.target.value);
+}
 
-input.addEventListener('input', onInput)
+input.addEventListener('input', debouncer(onInput));
 
