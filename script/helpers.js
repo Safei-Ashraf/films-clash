@@ -11,3 +11,7 @@ const debouncer = (callback,delay = 800)=>{
     }
 }
 
+//Clear html:
+const clearIt = (elem)=>{
+elem.innerHTML= '';
+}

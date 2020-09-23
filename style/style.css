@@ -1,6 +1,12 @@
 body{
-  font-family: 'Ranchers', cursive;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+h1{
   letter-spacing: 4px;
+  font-family: 'Ranchers', cursive;
 }
 .tutorial {
   width: 600px;
