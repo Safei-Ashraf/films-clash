@@ -73,7 +73,7 @@ const onMovieSelect = async (movie)=>{
         i: movie.imdbID
     }
    });
-   console.log(resp.data);
+   document.querySelector('#summary').innerHTML = renderMovie(resp.data);
 }
 //Close dropdown automatically:
 document.addEventListener('click',e=>{
