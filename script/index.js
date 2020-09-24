@@ -30,7 +30,7 @@ createAutocomplete({
     root: document.querySelector('#left-autocomplete'),
     onOptionSelect(movie){
         document.querySelector('.tutorial').classList.add('is-hidden');
-        onMovieSelect(movie,document.querySelector('#left-summary'));
+        onMovieSelect(movie,document.querySelector('#left-summary'), 'left');
     }
 })
 createAutocomplete({
@@ -38,12 +38,13 @@ createAutocomplete({
     root: document.querySelector('#right-autocomplete'),
     onOptionSelect(movie){
         document.querySelector('.tutorial').classList.add('is-hidden');
-        onMovieSelect(movie,document.querySelector('#right-summary'));
+        onMovieSelect(movie,document.querySelector('#right-summary'), 'right');
     }
 })
 
 //2nd Request made to get full movie info from API:
-const onMovieSelect = async (movie,summaryElement)=>{
+let leftMovie, rightMovie;
+const onMovieSelect = async (movie,summaryElement, side)=>{
     const resp = await axios.get(apiLink,{
     params:{
         apikey: apiKey,
@@ -51,5 +52,16 @@ const onMovieSelect = async (movie,summaryElement)=>{
     }
     });
     summaryElement.innerHTML = renderMovie(resp.data);
+    if(side === 'left')
+    {
+        leftMovie = resp.data;
+    }else{
+        rightMovie = resp.data;
+    }
+
+    if(leftMovie && rightMovie)
+    {
+        runComparison();
+    }
 }
 
