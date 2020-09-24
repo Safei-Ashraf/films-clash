@@ -11,7 +11,7 @@ while the lower will have a dark background color.
 
 ## Tools used:
 
-   >    Bulma CSS Framework
+   >     Bulma CSS Framework
 
 
   >     Axios
@@ -22,4 +22,4 @@ while the lower will have a dark background color.
 
 ## Live Version:
 
-![Click HERE](https://films-clash.netlify.app/)
+[Click HERE](https://films-clash.netlify.app/)
