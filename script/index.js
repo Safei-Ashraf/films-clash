@@ -1,4 +1,4 @@
-const apiLink = `http://www.omdbapi.com/?`;
+const apiLink = `https://www.omdbapi.com/?`;
 const apiKey = `ea52d5db`;
 //http://www.omdbapi.com/?t=fear&apikey=ea52d5db
 const autoCompleteConfig = {
