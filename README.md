@@ -14,10 +14,10 @@ while the lower will have a dark background color.
    >     Bulma CSS Framework
 
 
-  >     Axios
+   >     Axios
 
 
->     CSS,HTML,JS
+   >     CSS,HTML,JS
 
 
 ## Live Version:
